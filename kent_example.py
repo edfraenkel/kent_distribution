@@ -3,8 +3,8 @@
 The example code below shows various examples of the Kent distribution
 some random samples are drawn from the distribution and new estimates
 are generated using a moment estimation and a maximum likelihood fit.
-If this script is called with the --make-plots option then plots of
-the results will be shown.
+Plots will be shown unless this script is called with the --no-plots
+option.
 """
 
 from kent_distribution import *
@@ -250,7 +250,6 @@ def test_example_mle2(num_samples, showplots=False, verbose=False, stepsize=1.0)
 if __name__ == "__main__":
   from sys import argv
   showplots = False if len(argv) > 1 and '--no-plots' in argv[1:] else True
-  # this should go to the bottom
 
   if not (len(argv) > 1 and '--no-normalization' in argv[1:]):
     test_example_normalization(showplots=showplots, verbose=True, print_grid=False)
