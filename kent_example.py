@@ -16,7 +16,7 @@ seed(2323)
 
 def test_example_normalization(showplots=False, verbose=False, gridsize=100, print_grid=True):
   scale = (1000.0/gridsize)
-  print "Calculating the watrix M_ij of values that can be calculated: kappa=%.1f*i+1, beta=%.1f+j*1" % (scale, scale)
+  print "Calculating the matrix M_ij of values that can be calculated: kappa=%.1f*i+1, beta=%.1f+j*1" % (scale, scale)
   with warnings.catch_warnings():
     warnings.simplefilter("error")
     c_grid, dck_grid, dcb_grid = [zeros((gridsize, gridsize))-1.0 for z in xrange(3)]
