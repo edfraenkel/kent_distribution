@@ -17,7 +17,7 @@ from scipy.special import gamma as gamma_fun
 from scipy.special import iv as modified_bessel_2ndkind
 from scipy.special import ivp as modified_bessel_2ndkind_derivative
 from scipy.stats import uniform
-# it not smart to name the normal distribution norm, which can be confused with teh norm of a vector so we give it a less confusing name here
+# to avoid confusion with the norm of a vector we give the normal distribution a less confusing name here
 from scipy.stats import norm as gauss 
 from scipy.linalg import eig
 import sys
