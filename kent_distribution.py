@@ -605,7 +605,7 @@ if __name__ == "__main__":
   >>> from kent_example import test_example_normalization, test_example_mle, test_example_mle2
   >>> from numpy.random import seed
   >>> test_example_normalization(gridsize=10)
-  Calculating the watrix M_ij of values that can be calculated: kappa=100.0*i+1, beta=100.0+j*1
+  Calculating the matrix M_ij of values that can be calculated: kappa=100.0*i+1, beta=100.0+j*1
   Calculating normalization factor for combinations of kappa and beta: 
   Iterations necessary to calculate normalize(kappa, beta):
     8   x   x   x   x   x   x   x   x   x
