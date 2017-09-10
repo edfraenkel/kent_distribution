@@ -175,6 +175,7 @@ class KentDistribution(object):
     The proportional error may be expected not to be greater than 
     1E-11.
     
+    
     >>> gamma1 = array([1.0, 0.0, 0.0])
     >>> gamma2 = array([0.0, 1.0, 0.0])
     >>> gamma3 = array([0.0, 0.0, 1.0])
@@ -215,9 +216,7 @@ class KentDistribution(object):
           j += 1
           if abs(a) < abs(result)*1E-12 and j > 5:
             break
-        
-        # print "c", result, "(", k, b
-      
+              
       cache[k, b] = 2*pi*result
     if return_num_iterations:
       return cache[k, b], j
@@ -417,32 +416,26 @@ class KentDistribution(object):
     fmax = self.pdf_max(normalize=False)
     return xs[uniform(0, fmax).rvs(num_samples) < pvalues]
   
-  def rvs(self, shape=None):
+  def rvs(self, n_samples=None):
     """
     Returns random samples from the Kent distribution by rejection sampling. 
     May become inefficient for large kappas.
+
+    The returned random samples are 3D unit vectors.
+    If n_samples == None then a single sample x is returned with shape (3,)
+    If n_samples is an integer value N then N samples are returned in an array with shape (N, 3)
     """
-    if shape == None:
-      num_samples = 1
-    else:
-      if hasattr(shape, '__iter__'):
-        num_samples = 1
-        for s in shape:
-          num_samples *= s
-      else:
-        num_samples = shape
+    num_samples = 1 if n_samples == None else n_samples
     rvs = self._cached_rvs
     while len(rvs) < num_samples:
       new_rvs = self._rvs_helper()
       rvs = concatenate([rvs, new_rvs])
-    if shape == None:
+    if n_samples == None:
       self._cached_rvs = rvs[1:]
       return rvs[0]
     else:
       self._cached_rvs = rvs[num_samples:]
       retval = rvs[:num_samples]
-      if hasattr(shape, '__iter__'):
-        retval.shape = shape
       return retval
       
   def __repr__(self):
